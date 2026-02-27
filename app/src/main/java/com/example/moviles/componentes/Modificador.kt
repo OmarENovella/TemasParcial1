@@ -16,7 +16,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-val colorElegido = Color.Transparent
+val colorElegido = Color.Black
 
 @Preview(showBackground = true)
 @Composable
@@ -30,7 +30,7 @@ fun Modificador(){
             .padding(all = 7.dp)
             //.background(Color.Red)
             .padding(vertical = 14.dp)
-            .alpha(0.5f)
+            //.alpha(0.5f)
             .blur(0.8.dp)
             .border(width = 2.dp, Color.Blue,
                 shape = RoundedCornerShape(7.dp),
