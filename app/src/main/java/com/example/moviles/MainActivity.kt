@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.moviles.listas.ListView
+import com.example.moviles.navigation.NavManager
 import com.example.moviles.ui.theme.MovilesTheme
 
 class MainActivity : ComponentActivity() {
@@ -20,7 +21,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             MovilesTheme {
-                ListView()
+                NavManager()
             }
         }
     }

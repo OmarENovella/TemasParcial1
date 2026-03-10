@@ -3,6 +3,7 @@ package com.example.moviles.navigation
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -13,6 +14,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.toRoute
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -21,12 +23,24 @@ object Home
 @Serializable
 object Report
 
+@Serializable
+data class ReportModel(
+    val numSeccion: String,
+    val nombreEncargado: String,
+    val nombreSeccion: String
+)
+
 
 @Preview(showBackground = true)
 @Composable
 fun NavManager(){
     val navController = rememberNavController()
-    NavHost(navController, startDestination = Home){
+    NavHost(
+        navController,
+        startDestination = Home,
+        modifier = Modifier
+            .navigationBarsPadding()
+    ){
         
         composable<Home> {
             HomeView(navController)
@@ -34,6 +48,11 @@ fun NavManager(){
 
         composable<Report> {
             ReportView(navController)
+        }
+
+        composable<ReportModel> {
+            val datos: ReportModel = it.toRoute()
+            PDFView(datos)
         }
     }
 }
